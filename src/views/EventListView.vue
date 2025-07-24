@@ -12,7 +12,7 @@ const router = useRouter() // Add this line
 
 
 const hasNextPage = computed(() => {
-  const totalPages = Math.ceil(totalEvents.value / 2)
+  const totalPages = Math.ceil(totalEvents.value / 3)
   return page.value < totalPages
 })
 
@@ -31,7 +31,7 @@ const props = defineProps({
   },
   size: {
     type: Number,
-    default: 4 // Default page size
+    default: 3 // Default page size
   }
 })
 const page = computed(() => props.page)
