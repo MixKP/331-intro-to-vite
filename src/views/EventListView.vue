@@ -31,7 +31,7 @@ const props = defineProps({
   },
   size: {
     type: Number,
-    default: 2 // Default page size
+    default: 4 // Default page size
   }
 })
 const page = computed(() => props.page)
