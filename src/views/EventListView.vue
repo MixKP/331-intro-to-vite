@@ -2,13 +2,21 @@
 import EventCard from '../components/EventCard.vue'
 import CategoryOrganizer from '@/components/CategoryOrganizer.vue'
 import EventService from '@/services/EventService'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import type { Event } from '@/types'
 
 const events = ref<Event[]>([])
 
+const props = defineProps({
+  page: {
+    type: Number,
+    required: true
+  }
+})
+const page = computed(() => props.page)
+
 onMounted(() => {
-  EventService.getEvents()
+  EventService.getEvents(2 , page.value)
     .then((response) => {
       events.value = response.data
     })
@@ -23,7 +31,6 @@ onMounted(() => {
   <!-- new element -->
   <div class="events">
     <EventCard v-for="event in events" :key="event.id" :event="event" />
-    <CategoryOrganizer v-for="event in events" :key="event.id" :event="event" />
   </div>
 </template>
 
