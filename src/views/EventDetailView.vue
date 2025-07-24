@@ -6,12 +6,12 @@ import EventService from '@/services/EventService'
 const event = ref<Event | null>(null)
 const props = defineProps({
   id: {
-    type: Number,
+    type: String,
     required: true
   }
 })
 onMounted(() => {
-  EventService.getEvent(props.id)
+  EventService.getEvent(parseInt(props.id))
     .then((response) => {
       event.value = response.data
     })
