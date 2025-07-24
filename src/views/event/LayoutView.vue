@@ -18,8 +18,13 @@ onMounted(() => {
     .then((response) => {
       event.value = response.data
     })
-    .catch(() => {
-      router.push({ name: '404-resource-view', params: { resource: 'event' } })
+    .catch((error) => {
+      if (error.response && error.response.status === 404) {
+        // Redirect to a 404 page if the event is not found
+        router.push({ name: '404-resource-view', params: { resource: 'event' } })
+      } else {
+        router.push({ name: 'network-error-view' })
+      }
     })
 })
 </script>
