@@ -10,21 +10,38 @@ const { message } = storeToRefs(store)
 <template>
   <div class="text-center font-sans text-gray-700 antialiased">
     <header>
-      <div id="flashMessage" v-if="message">
+      <div id="flashMessage" v-if="message" class="animate-fade">
         <h4>{{ message }}</h4>
       </div>
-      <div class="wrapper">
+      <div class="py-6">
         <nav>
-          <RouterLink :to="{ name: 'event-list-view' }">Event</RouterLink> |
-          <RouterLink :to="{ name: 'about' }">About</RouterLink> |
-          <RouterLink :to="{ name: 'student-view' }">Student</RouterLink>
+          <RouterLink
+            class="font-bold text-gray-700"
+            exact-active-class="!text-green-500"
+            :to="{ name: 'event-list-view' }"
+            >Event</RouterLink
+          >
+          |
+          <RouterLink
+            class="font-bold text-gray-700"
+            exact-active-class="!text-green-500"
+            :to="{ name: 'about' }"
+            >About</RouterLink
+          >
+          |
+          <RouterLink
+            class="font-bold text-gray-700"
+            exact-active-class="!text-green-500"
+            :to="{ name: 'student-view' }"
+            >Student</RouterLink
+          >
         </nav>
       </div>
     </header>
     <RouterView />
   </div>
 </template>
-
+<!--
 <style>
 nav {
   padding: 30px;
@@ -40,15 +57,4 @@ nav a.router-link-exact-active {
 h2 {
   font-size: 20px;
 }
-@keyframes yellowFlash {
-  from {
-    background-color: #f1c40f;
-  }
-  to {
-    background-color: transparent;
-  }
-}
-#flashMessage {
-  animation: yellowFlash 1s ease-in-out;
-}
-</style>
+</style> -->

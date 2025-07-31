@@ -20,16 +20,8 @@ onMounted(() => {
 <template>
   <h1>Students</h1>
   <!-- new element -->
-  <div class="students">
+  <div class="flex flex-col items-center">
     <!-- <EventCard v-for="event in students" :key="event.id" :event="event" /> -->
     <StudentCard v-for="student in students" :key="student.id" :student="student" />
   </div>
 </template>
-
-<style scoped>
-.students {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-</style>
