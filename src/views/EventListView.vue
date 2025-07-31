@@ -15,8 +15,9 @@ const hasNextPage = computed(() => {
   return page.value < totalPages
 })
 
-const handlePageSizeChange = (event: Event) => {
-  const newSize = parseInt((event.target as HTMLSelectElement).value)
+const handlePageSizeChange = (event: globalThis.Event) => {
+  const target = event.target as HTMLSelectElement
+  const newSize = parseInt(target.value)
   router.push({
     name: 'event-list-view',
     query: { page: 1, size: newSize },
